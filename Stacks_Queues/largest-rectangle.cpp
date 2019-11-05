@@ -9,9 +9,8 @@
 long largestRectangle(std::vector<int> h){
     int n = h.size();
     
-    // initialise stack with left wall and height of first building
+    // initialise stack for storage of left wall and height of each building
     std::stack<std::pair<int, int>> s;
-    s.push(std::make_pair(0, h[0]));
     
     // initialise variables for computing area iteratively
     long maxArea = 0;
@@ -19,9 +18,9 @@ long largestRectangle(std::vector<int> h){
     long curLeft = 0;
     
     // iterate over remaining buildings
-    for (int i = 1; i < n; ++i){
+    for (int i = 0; i < n; ++i){
         // if current building is taller than previous building
-        if (h[i] >= s.top().second){
+        if (s.empty() || h[i] >= s.top().second){
             s.push(std::make_pair(i, h[i]));
             
         // if current building is shorter than previous building

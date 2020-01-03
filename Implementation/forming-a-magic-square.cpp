@@ -40,12 +40,11 @@ int formingMagicSquare(std::vector<std::vector<int>> s)
         {{6,7,2},{1,5,9},{8,3,4}},
         {{2,7,6},{9,5,1},{4,3,8}}
     };
-    std::set<std::vector<std::vector<int>>>::iterator it;
     
     // minimum diff cannot be more than the maximum sum of a magic square matrix,
     // which is 1 + 2 + ... + 9 = 45
     int minDiff = 45;
-    for (it = magicSquares.begin(); it != magicSquares.end(); ++it)
+    for (auto it = magicSquares.begin(); it != magicSquares.end(); ++it)
     {
         int diff = computeDiff(s, *it);
         minDiff = std::min(diff, minDiff);
